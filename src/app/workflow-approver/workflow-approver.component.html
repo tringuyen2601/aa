@@ -1,0 +1,166 @@
+<div class="container-fluid">
+    <div class="row d-flex d-md-block flex-nowrap wrapper">
+        <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+                <div class="list-group border-0 card text-center text-md-left">
+                <h5 style="color: #ffffff;" class="text-center mt-2"><i class="fa fa-filter" aria-hidden="true"></i>Filter By</h5>
+               
+                <div class="offset-md-1 list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-shopping-bag"></i> <span class="d-none d-md-inline">Products</span>
+                </div>
+                <div>
+                <div class="offset-md-1 col-md-10 text-center products"> 
+                    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+                        [settings]="dropdownSettings" 
+                        (onSelect)="onItemSelect($event)" 
+                        (onDeSelect)="OnItemDeSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                        (onDeSelectAll)="onDeSelectAll($event)">
+                    </angular2-multiselect>
+                </div>
+                </div>
+                <div class="offset-md-1 list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span class="d-none d-md-inline">Product Category</span>
+                </div>
+                 <div>
+                    <div class="offset-md-1 col-md-10 text-center"> 
+                        <angular2-multiselect [data]="catDropdownList" [(ngModel)]="catSelectedItems" 
+                            [settings]="catDropdownSettings" 
+                            (onSelect)="onCategorySelect($event)" 
+                            (onDeSelect)="OnCategoryDeSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                            (onDeSelectAll)="onDeSelectAll($event)">
+                        </angular2-multiselect>
+                    </div>
+                 </div>
+                 <div class="offset-md-1 list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-cubes"></i> <span class="d-none d-md-inline">Store</span>
+                </div>
+                 <div>
+                    <div class="offset-md-1 col-md-10 text-center"> 
+                        <angular2-multiselect [data]="storedropdownList" [(ngModel)]="storeSelectedItems" 
+                            [settings]="storeDropdownSettings" 
+                            (onSelect)="onStoreSelect($event)" 
+                            (onDeSelect)="OnStoreDeSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                            (onDeSelectAll)="onDeSelectAll($event)">
+                        </angular2-multiselect>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+            <div class="text-center">  
+              <!-- <simple-ng-tags [placeholder]="''" [formControl]="tags"></simple-ng-tags> -->
+            </div>
+            
+            <div class="container-fluid p-1">
+              <div class="row">
+                  <div class="offset-6 col-md-2 mt-5">
+                    <button type="submit" class="btn btn-primary" (click)="onSubmitComments(usersData)">Submit</button>
+                  </div>
+              </div>
+              <div *ngFor="let user of usersData  | slice : startPage:paginationLimit ;let $in = index;" class="row mt-5"> 
+                    <div class="offset-md-1 col-md-11">
+                          <div class="card" style="box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;">
+                            <div class="card-header card-header-padding">
+                                <div class="row mt-3">
+                                    <!--<h6 *ngIf="user.product.marketingData.name!=''" class="ml-3 mr-5"><strong>Product:</strong> {{user.product.marketingData.name}} </h6>-->
+                                    <!--<h6 *ngIf="user.product.categoryNode.name!=''" class="mr-5 "><strong>Category:</strong> {{user.product.categoryNode.name}} </h6>-->
+                                    <!--<h6 *ngIf="user.store.displayName!=''" style="margin-right:35rem!important;" class="ml-4 mr-5"><strong>Store:</strong> {{user.store.displayName}} </h6>-->
+                                    <h6 *ngIf="user.product!=null" class="ml-3 mr-5"><strong>Product:</strong> {{user.product.marketingData.name}} </h6>
+                                    <h6 *ngIf="user.categoryname!=''" class="mr-5 "><strong>Category:</strong> {{user.categoryname}} </h6>
+                                    <h6 *ngIf="user.store!=null" style="margin-right:35rem!important;" class="ml-4 mr-5"><strong>Store:</strong> {{user.store.displayName}} </h6>
+                                  <div class="stars">
+                                       <i  *ngFor='let n of range; let $index = index;' class="fa" [ngClass]='isMarked(user.rating,$index)'></i>
+                                          <!--<i class="fa fa-star star-style" aria-hidden="true"></i>
+                                          <i class="fa fa-star star-style" aria-hidden="true"></i>
+                                          <i class="fa fa-star star-style" aria-hidden="true"></i>
+                                          <i class="fa fa-star-half-o star-style" aria-hidden="true"></i>
+                                          <i class="fa fa-star-o empty-star-style" aria-hidden="true"></i>-->
+                                  </div>
+                                   <p>&nbsp; Rated {{user.rating}} <small> / </small> 5 </p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                              <div>
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                        <h4 class="card-title">User Name: {{user.name}}</h4>
+                                        <p>Title: {{user.title}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-12" style="height: 200px;">
+                                           <!--<h6 class="card-subtitle mb-2 text-muted">commented on April 13 2017</h6>-->
+                                            <p class="card-text" style="min-height:50%;height:85%;overflow-y:auto;">{{user.comment}}</p>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row justify-content-end mb-3">
+                                    <div class="col-5">
+                                            <input type="radio" id="approve{{$in}}" name="decision{{$in}}" [value]="'approve'+user.id" (change)="onSelectionChange(user)"  [(ngModel)]="user.selectedDecision" (ngModelChange)="fnSelectedChoice($event)">
+                                            <label for="approve{{$in}}"><span></span>Approve</label>
+                                            <input type="radio" id="reject{{$in}}" name="decision{{$in}}" [value]="'reject'+user.id" (change)="onSelectionChange(user)"  [(ngModel)]="user.selectedDecision" (ngModelChange)="fnSelectedChoice($event)">
+                                            <label for="reject{{$in}}"><span></span>Reject</label>
+                                            <input type="radio" id="nothing{{$in}}" name="decision{{$in}}" [value]="'approval_pending'+user.id"  (change)="onSelectionChange(user)"  [(ngModel)]="user.selectedDecision" (ngModelChange)="fnSelectedChoice($event)">
+                                            <label for="nothing{{$in}}"><span></span>Query for later</label>
+                                            
+                                             <!--<input type="radio" id="approve{{$in}}" name="decision{{$in}}" [value]="'approve'+user.id" (change)="onSelectionChange(user,value)" [(ngModel)]="selectedDecision">
+                                            <label for="approve{{$in}}"><span></span>Approve</label>
+                                            <input type="radio" id="reject{{$in}}" name="decision{{$in}}" [value]="'reject'+user.id" (change)="onSelectionChange(user,value)" [(ngModel)]="selectedDecision">
+                                            <label for="reject{{$in}}"><span></span>Reject</label>
+                                            <input type="radio" id="nothing{{$in}}" name="decision{{$in}}" [value]="'approval_pending'+user.id"  (change)="onSelectionChange(user,value)" [(ngModel)]="selectedDecision">
+                                            <label for="nothing{{$in}}"><span></span>Query for later</label>-->
+
+                                             <!--<input type="radio" id="approve{{$in}}" name="decision{{$in}}" value="Approve" (click)="setDecision('Approve')" [checked]='checkedApprove' ngModel>
+                                            <label for="approve{{$in}}"><span></span>Approve</label>
+                                            <input type="radio" id="reject{{$in}}" name="decision{{$in}}" value="Reject" (click)="setDecision('Reject')" [checked]='checkedReject' ngModel>
+                                            <label for="reject{{$in}}"><span></span>Reject</label>
+                                            <input type="radio" id="nothing{{$in}}" name="decision{{$in}}" value="Nothing" (click)="setDecision('Nothing')" [checked]='checkedNothing' ng-model>
+                                            <label for="nothing{{$in}}"><span></span>Query for later</label>-->
+                                    </div>
+                              </div>
+                              <div class="row" id="reason{{$in}}" *ngIf="user.selectedDecision == 'reject'+user.id ">
+                                <div class="col-12">
+                                   <textarea style="resize:none;width:100%;" [(ngModel)]="user.reason" name="RejectReason{{$in}}" id="rejectreasonID{{$in}}" rows="4" placeholder="Reason for rejection...."></textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+              </div>
+              <div class="row mb-5">  
+                   <div class="offset-5 col-md-6 mt-5">
+                        <button class="btn btn-primary" *ngIf ="paginationLimit < usersData.length" (click)="showMoreItems()">Show More</button>
+                        <button class="btn btn-primary" *ngIf ="paginationLimit > 5" (click)="showLessItems()">Show Less</button>
+                   </div>
+              </div>
+                <div class="row mb-5">
+                    <div class="offset-6 col-md-2 mt-5">
+                        <button type="submit" class="btn btn-primary" (click)="onSubmitComments(usersData)">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--<nav aria-label="Page navigation example" class="mt-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>-->
+        </main>
+        
+    </div>
+</div>
+
+

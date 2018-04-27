@@ -1,0 +1,31 @@
+<input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+<h2 (click) = "create()">create</h2>
+<table class="table table-hover">
+    <tr>
+      <th scope="col" *ngFor = "let til of title">
+        <span>{{til}}</span>
+      </th>
+    </tr>
+    <tbody >
+        <tr *ngFor = "let r of row; let i = index">
+            <td *ngFor = "let rowData of row[i]">{{rowData}}</td>
+            <td *ngIf="show"><input type="checkbox" id="myCheck"  (click) = "checked(i)"> </td>
+          </tr>
+          <tr *ngIf="createRow">
+              <div [innerHTML]="theHtmlString"></div>
+            <td *ngFor = "let til of rowTemp; let j = index"><input type="text" class="txt" name="item" placeholder="Life goal.." [(ngModel)]="boo[j]"> </td>
+          </tr>
+    </tbody>  
+  </table>
+
+  <div class="container" *ngIf="createRow">
+      <button type="button" class="btn btn-primary" (click)="loadTitle()">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="onCreate()">Add</button>
+    </div>
+    
+<div class="container" *ngIf="showButton">
+  <button type="button" class="btn btn-primary" (click)="loadTitle()">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="delete()">Add</button>
+</div>
+
+<p>"<span [innerHTML]="evilTitle"></span>" is the <i>property bound</i> evil title.</p>

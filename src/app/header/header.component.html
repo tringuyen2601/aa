@@ -1,0 +1,67 @@
+<!--<header class="app-header navbar navbar-inverse tb-background-color">
+  <a class="navbar-brand" href="#">ThingBook - Admin</a>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/options']"> Options</a>
+    </li>
+    <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle>
+        <i class="fa fa-language"></i><span class="hidden-md-down">Languages : English</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="language-dropdown">
+        <a class="dropdown-item" href="#"> English</a>
+        <a class="dropdown-item" href="#"> German</a>
+        <a class="dropdown-item" href="#"> Chinese</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="cursor:pointer;" (click)="goToLogin()">Login</a>
+    </li>
+  </ul>
+</header>-->
+
+<header class="navbar navbar-expand-lg navbar-light tb-background-color">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#headerDropdown" aria-controls="headerDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand color-white" href="#">ThingBook </a><!--text changes when user logs in ex: - Workflow Admin -->
+      <div class="collapse navbar-collapse" id="headerDropdown">
+        <div class="d-flex justify-content-center w-25  {{displaySolution}}">
+          <ul class="navbar-nav">
+              <!--<li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/options']"> Options</a>
+              </li>-->
+              <!--<li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSolutionsLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>Solutions</span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownSolutionsLink">
+                    <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/manage-roles']"> Manage Roles</a>
+                    <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/assign-role']"> Assign Role to User</a>
+                    <a class="dropdown-item" href="#"> Upload Products</a>
+                    <a class="dropdown-item" href="#"> Get CIAM certificate </a>
+                  </div>
+                </li>-->
+          </ul>
+        </div>
+        <div class="d-flex flex-row-reverse w-100">
+            <ul class="navbar-nav">
+              <!--<li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHeaderLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-language"></i><span>Languages : English</span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownHeaderLink">
+                    <a class="dropdown-item" href="#"> English</a>
+                    <a class="dropdown-item" href="#"> German</a>
+                    <a class="dropdown-item" href="#"> Chinese</a>
+                  </div>
+                </li>-->
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="!loggedIn" style="cursor:pointer;" (click)="goToLogin()">Login</a>
+                <a class="nav-link" *ngIf="loggedIn" style="cursor:pointer;" (click)="goToLogout()">Logout</a>
+              </li>
+            </ul>
+        </div>
+      </div>
+</header>

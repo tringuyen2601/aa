@@ -1,0 +1,33 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.id{
+    width: 3%;
+}
+.bname{
+    background-color: rgba(189, 184, 184, 0.452);
+}
+th{
+    border-bottom: 3px solid;
+    border-bottom-color: grey;
+    text-align: left;
+    padding: 8px;
+}
+td{
+    border-bottom: 1px solid;
+    border-bottom-color: grey;
+    text-align: left;
+    padding: 8px;
+}
+button{
+    background-color: white;
+    color: blue;
+    width: 17%;
+    font-weight: 400;
+}
+
+tr:nth-child(even) {
+  
+}

@@ -1,0 +1,46 @@
+<div class="container-fluid mt-5">
+    <div class="row"> 
+        <div class="col-md-12">
+               <ul class="nav nav-tabs" id="adminTab" role="tablist" >
+                  <li class="nav-item">
+                    <a class="nav-link active" id="buckets-tab" data-toggle="tab" href="#manage_buckets" role="tab" aria-controls="manage_buckets" aria-selected="false">Manage Buckets</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="update-tab" data-toggle="tab" href="#update_accounts" role="tab" aria-controls="update_accounts" aria-selected="false">Update Accounts</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="permission-tab" data-toggle="tab" href="#manage_permission" role="tab" aria-controls="manage_permission" aria-selected="false">Manage Permissions</a>
+                  </li>
+                </ul>
+          </div> 
+        </div> 
+        <div class="row mt-5 mb-5">
+          <div class="offset-md-1 col-md-10"> 
+              <div class="tab-content" id="adminTabContent">
+                <div class="tab-pane active" id="manage_buckets" role="tabpanel" aria-labelledby="buckets-tab">
+                  <buckets-admin [data]="bucketsData"
+                                  (onDelete)="onDeleteBucket($event)"
+                                  (oncreate)="onCreateConfirm($event)"
+                                  (onEdit)="onEditBucket($event)"
+                  >
+                  </buckets-admin>
+                </div>
+                  <div class="tab-pane fade" id="update_accounts" role="tabpanel" aria-labelledby="update-tab">
+                    <accounts-admin [accountObject]="accountObject"
+                                    [selectedAccountBucketId]="selectedAccountBucketId"
+                                    [listAdminBuckets]="listAdminBuckets"
+                                    [accountData]="accountData"
+                    >
+                    </accounts-admin>
+                  </div>
+                  <div class="tab-pane fade" id="manage_permission" role="tabpanel" aria-labelledby="permission-tab">
+                    <permission-admin [globalAdminData]="globalAdminData"
+                      [listAdminBuckets]="listAdminBuckets"
+                    >
+                    </permission-admin>
+                  </div>
+             </div>
+          </div>
+        </div> 
+</div>
+

@@ -1,0 +1,35 @@
+ul.navbar-nav > li {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+
+.custom-sidebar-toggler {
+    z-index: 2147483647;
+    display: block;
+    position: fixed;
+    top: 40%;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    border: 1px solid transparent;
+    border-top-right-radius: 114px;
+    border-bottom-right-radius: 114px;
+    box-shadow: 1px 1px 2px #ddd;
+    padding: 28px 3px;
+    -webkit-transition-duration: 0.25s, 0.25s;
+    transition-duration: 0.25s, 0.25s;
+    cursor: pointer;
+}
+.custom-sidebar-toggler:hover{
+    padding: 30px 5px;
+}
+.custom-sidebar-toggler span{
+    color:#36a2cd;
+    text-shadow: 1px 2px 3px #aaa;
+}
+
+@media screen and (min-width: 992px) {
+.custom-sidebar-toggler{
+    left:220px;
+}
+}

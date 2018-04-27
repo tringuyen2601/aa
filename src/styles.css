@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+.heading-color
+{
+    color: #1f5677;
+}
+.btn-custom-primary
+{
+    color: #ffffff;
+    background-color: #2d5786;
+    border-color: #2d5786;
+}
+.btn-custom-primary:hover {
+    color: #fff;
+    background-color: #3674a9;
+    border-color: #01549b;
+}
+.control-label.required:after { 
+    color: #d00;
+    content: "*";
+    margin-left: 5px;
+    top:7px;
+}

@@ -1,0 +1,65 @@
+:host {
+  font-size: 1rem;
+
+  /deep/ {
+    * {
+      box-sizing: border-box;
+    }
+    .ng2-smart-th.id{
+      width: 5%;
+    }
+    .ng2-smart-td.name{
+      background-color: grey
+    }
+    .ng2-smart-row{
+      background-color: grey
+    }
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      color: inherit;
+      font: inherit;
+      margin: 0;
+    }
+
+    table {
+      line-height: 1.5em;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: table;
+      width: 100%;
+      max-width: 100%;
+      overflow: auto;
+      word-break: normal;
+      word-break: keep-all;
+
+      tr {
+        th {
+          font-weight: bold;
+          border-bottom: 2px solid #0b07e9;
+        }
+        section {
+          font-size: .75em;
+          font-weight: bold;
+        }
+        td
+        {
+          font-size: .875em;
+          margin: 0;
+          padding: 0.5em 1em;
+          border-bottom: 1px solid #e9ebec;
+        }
+      }
+    }
+
+    a {
+      color: #1e6bb8;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

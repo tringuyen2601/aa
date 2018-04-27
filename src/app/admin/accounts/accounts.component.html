@@ -1,0 +1,91 @@
+<!-- Create public account -->
+<div class="offset-md-2 col-9">
+        <form (ngSubmit)="onSubmitCreateAccount()" [formGroup]="accountForm">
+        <input type="hidden" formControlName="id">
+        <div class="form-group">
+                <label for="selectedBucketId" class="control-label required">Select Bucket: </label>
+                <select formControlName="selectedBucketId" class="form-control selectpicker" name="bucketListAcc" [(ngModel)]="selectedBucketinAcc" (change)="onChangeBucket($event.target.value)" id="selectedBucketId">
+                <option value="selectBucket">Select Bucket</option>
+                <option *ngFor="let option of listAdminBuckets" [value]="option.id">
+                {{ option.name }}
+                </option>
+                </select>
+        </div>
+        <div class="form-group">
+                <label for="inputDisplayName" class="control-label required">Display Name</label>
+                <input type="text"  formControlName="name" class="form-control" id="inputDisplayName" placeholder="Display name of public account">
+        </div>
+        <div class="form-row" formGroupName="accountTags">
+                <label for="inputAccessProperty" class="control-label required mr-5">Access Property</label>
+                <div class="form-group col-md-2">
+                <div class="form-check">
+                <input formControlName="groupChat" class="form-check-input" type="checkbox" id="groupChat" >
+                <label class="form-check-label" for="groupChat">
+                        Group Chat
+                </label>
+                </div>
+                </div>
+                <div class="form-group col-md-3">
+                <div class="form-check">
+                <input formControlName="privateAcc" class="form-check-input" type="checkbox"  id="privateAcc">
+                <label class="form-check-label" for="privateAcc">
+                        Private/Restricted account
+                </label>
+                </div>
+                </div>
+                <div class="form-group col-md-2">
+                <div class="form-check">
+                <input formControlName="community" class="form-check-input" type="checkbox" id="community">
+                <label class="form-check-label" for="community">
+                        Community
+                </label>
+                </div>
+                </div>
+                <div class="form-group col-md-2">
+                <div class="form-check">
+                <input formControlName="hiddenAcc" class="form-check-input" type="checkbox" id="hiddenAcc">
+                <label class="form-check-label" for="hiddenAcc">
+                        Hidden Account
+                </label>
+                </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <label for="inputURL">URL</label>
+                <input formControlName="targetURL" type="text" name="URL" class="form-control" id="inputURL" placeholder="URL of service page" pattern="https?://.+" required>
+                </div>
+                <div class="form-group">
+                <label for="inputURL">Attributes</label>
+                <input formControlName="customAttributes" type="text"  name="accountAttributeKey" [(ngModel)]="attrListData" class="form-control" id="inputURL" placeholder="key1=value1&key2=value2" disabled>
+                <ng2-smart-table 
+                        [settings]="settingsURLAttribues"
+                        [source]="urlAttributes"
+                        (createConfirm)="addAttributes($event)"
+                        (deleteConfirm)="deleteAttributes($event)">
+                </ng2-smart-table>
+                </div>
+
+                <div class="form-group">
+                        <p-tree [value]="files" selectionMode="single" [(selection)]="selectedFile" 
+                        (onNodeSelect)="nodeSelect($event)"
+                        (onNodeUnselect)="nodeUnselect($event)"></p-tree>  
+                </div>
+
+                <div class="form-group">
+                <button type="submit" class="btn btn-primary" >{{accountObject.id == 0 ? 'Create' : 'Update'}}</button>
+                <label class="btn btn-primary reset-btn" (click)="resetAccountForm()">Reset</label>
+                </div>
+        </form>
+        </div>
+        <div class="offset-md-2 col-9" *ngIf="selectedAccountBucketId">
+        <ng2-smart-table 
+                [settings]="settingsUpdateAccount"
+                [source]="accountData"
+                (deleteConfirm)="onDeleteAccount($event)"
+                (userRowSelect)="onUserRowSelect($event)">
+        </ng2-smart-table>
+        
+</div>
+<div class="offset-md-2 col-9">
+       
+</div>

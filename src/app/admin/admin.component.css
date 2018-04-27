@@ -1,0 +1,25 @@
+/*:host /deep/ ng2-smart-table thead  tr  th a .add-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table thead  tr  td a .create-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table thead  tr  td a .cancel-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table tbody  tr  td a .edit-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table tbody  tr  td a .save-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table tbody  tr  td a .cancel-button{ 
+	font-size: 18px;
+}
+:host /deep/ ng2-smart-table tbody  tr  td a .delete-button{ 
+	font-size: 18px;
+}*/
+
+.reset-btn{
+	margin-bottom: 0px !important;
+}
